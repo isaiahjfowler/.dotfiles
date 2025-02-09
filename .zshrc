@@ -2,6 +2,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
+
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -104,8 +106,19 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+suspend_directory() {
+   tmux_session=$(tmux display-message -p "#S")
+   cd_path=$(cat "$HOME/.local/share/nvim/suspend/$tmux_session" | awk -F 't' '{print $2}')
+   echo "hello"
+   echo $cd_path
+}
+
+source <(fzf --zsh)
+
 alias v="nvim"
 alias vim="nvim"
 alias ll="ls -alhG"
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^f "~/scripts/tmux-sessionizer\n"
 bindkey -s ^z "fg\n"
+bindkey -s ^y "suspend_directory\n"
+
