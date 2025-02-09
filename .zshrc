@@ -108,9 +108,14 @@ source $ZSH/oh-my-zsh.sh
 
 suspend_directory() {
    tmux_session=$(tmux display-message -p "#S")
-   cd_path=$(cat "$HOME/.local/share/nvim/suspend/$tmux_session" | awk -F 't' '{print $2}')
-   echo "hello"
-   echo $cd_path
+   root_dir=$(cat "$HOME/.local/share/nvim/suspend/$tmux_session" | awk -F 't' '{print $1}')
+   buffer_dir=$(cat "$HOME/.local/share/nvim/suspend/$tmux_session" | awk -F 't' '{print $2}')
+
+   if [ "$root_dir" = "$(pwd)" ]; then
+      cd "$buffer_dir"
+   else 
+      cd "$root_dir"
+   fi
 }
 
 source <(fzf --zsh)
@@ -121,6 +126,5 @@ alias ll="ls -alhG"
 bindkey -s ^f "~/bin/tmux-sessionizer\n"
 bindkey -s ^z "fg\n"
 bindkey -s ^y "suspend_directory\n"
-
 export PATH="$HOME/bin:$PATH"
 
