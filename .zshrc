@@ -118,9 +118,9 @@ source <(fzf --zsh)
 alias v="nvim"
 alias vim="nvim"
 alias ll="ls -alhG"
-bindkey -s ^f "~/scripts/tmux-sessionizer\n"
+bindkey -s ^f "~/bin/tmux-sessionizer\n"
 bindkey -s ^z "fg\n"
 bindkey -s ^y "suspend_directory\n"
 
-export PATH="$HOME/scripts:$PATH"
+export PATH="$HOME/bin:$PATH"
 

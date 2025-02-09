@@ -1,0 +1,4 @@
+#!/bin/bash
+
+git add .
+git commit -m "$(cat ~/.local/share/quotes | shuf --head-count=1)"
