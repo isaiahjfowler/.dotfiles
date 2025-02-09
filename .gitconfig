@@ -4,6 +4,7 @@
 [alias]
 	log = git log --oneline --graph --decorate
 	graph = log --all --oneline --graph --decorate
-	lazy = '!git add . && git commit -m $(cat ~/.local/share/quotes | shuf --head-count=1)'
+	lazy = !lazy.sh
+ 
 [core]
 	excludesfile = /Users/brynnafowler/.gitignore_global

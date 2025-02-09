@@ -122,3 +122,5 @@ bindkey -s ^f "~/scripts/tmux-sessionizer\n"
 bindkey -s ^z "fg\n"
 bindkey -s ^y "suspend_directory\n"
 
+export PATH="$HOME/scripts:$PATH"
+
